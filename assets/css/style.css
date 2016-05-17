@@ -1,0 +1,9 @@
+.border{
+	border: red solid 2px;
+}
+.errors{
+	border:green solid 2px;
+}
+.answers{
+	border: blue solid 2px;
+}

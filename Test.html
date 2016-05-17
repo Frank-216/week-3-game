@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Franks Hangman</title>
+
+   
+    
+
+  </head>
+  <body>
+  <h2> Test </h2>
+    <script>
+
+    // All my Javascript for the program 
+
+    var answers = ['red','blue', 'yellow', 'orange', 'purple'];
+    var remainingGuesses = 6; // guesses remaining 
+    var round = 0; // round 
+    var charSplit;
+    var rand;
+    var underScores;
+    var CorrectGuess;
+    var incorrectGuess = [];
+
+    // split the solution & display the correct number of letters of the solution.
+    function solution(myArray){
+        rand = myArray[Math.floor(Math.random()* myArray.length)];
+        console.log(rand);
+        charSplit = rand.split('');
+        console.log(charSplit);
+        underScores = [];
+        for(var i = 0; i < charSplit.length; i++){
+            underScores[i] = " _ ";
+        }
+        console.log(underScores)
+    }// Close Solution 
+
+    //initial display or guess
+    function display(underScores){
+
+    }
+    //how to replace underscores if they are guesses.  
+    //Indexof will only replace 1st instance.  Slice or Splice will remove element from array
+    // function to check word for value and replace.  takes in answer & guess WHile loop 
+    solution(answers);
+    
+        document.onkeyup = function(event) {
+        var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+        console.log(userGuess);// Takes user development 
+        if( remainingGuesses > 0 ){
+            if(charSplit.indexOf(userGuess) !== -1){
+                CorrectGuess = charSplit.indexOf(userGuess);
+                console.log(CorrectGuess);
+                alert(userGuess + " is correct you still have " + remainingGuesses + " tries left!")
+                
+            }else{
+                incorrectGuess.push(userGuess);
+                console.log(incorrectGuess);
+                console.log(remainingGuesses);
+                alert(userGuess + " is not in the word.")
+                remainingGuesses--;//reducing remaining counts
+            }
+         }else{
+            alert("You Lose :( ");
+         }
+ }// Colsing function event
+
+    
+    
+    
+    </script>
+  </body>
+</html>
