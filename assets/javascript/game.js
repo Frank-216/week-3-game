@@ -8,7 +8,8 @@
     var blankAnswer;
     var CorrectGuess;
     var incorrectGuess = [];
-    var letter;
+    var counter = 0;;
+
 
     // split the solution & display the correct number of letters of the solution.
     function solution(myArray){
@@ -29,8 +30,15 @@
 				
     }
     function replace(userGuess, charSplit){
-    	letter = charSplit.indexOf(userGuess);
-    	blankAnswer[letter] = userGuess;
+        for (var i = 0; i < charSplit.length; i++) {
+            if( charSplit[i] === userGuess){
+                blankAnswer[i] = userGuess;
+                 counter++;
+                console.log(counter);
+            }
+        }
+    	//letter = charSplit.indexOf(userGuess);
+    	//blankAnswer[letter] = userGuess;
     	document.querySelector("div.answers").innerHTML = blankAnswer.join(" ");
 
     }
@@ -43,7 +51,7 @@
     	remainingGuesses = 6;// restarting Game 
     	console.log(remainingGuesses);
     	solution(answers);// start a new game
-    	
+    	document.querySelector("div.errors").innerHTML = "";
     	console.log(blankAnswer);
 
     }
@@ -60,7 +68,7 @@
 	      	remainingGuesses--;//reducing remaining counts
     		}
     	}// Close function
-
+    
     //how to replace underscores if they are guesses.  
     //Indexof will only replace 1st instance.  Slice or Splice will remove element from array
     // function to check word for value and replace.  takes in answer & guess WHile loop 
@@ -70,18 +78,21 @@
         document.onkeyup = function(event) {
         var userGuess = String.fromCharCode(event.keyCode).toLowerCase();// Takes user development 
        
-        if( remainingGuesses > 0 ){
-            if(charSplit.indexOf(userGuess) !== -1 ){
-            			CorrectGuess = charSplit.indexOf(userGuess);
-									replace(userGuess,charSplit);
-            		}else{
-            		checkWrongAnswers(userGuess);
-            }
-         }else{
-            alert("You Lose :( ");
-            reset(incorrectGuess);
+            if( remainingGuesses > 0 ){
+                if(charSplit.indexOf(userGuess) !== -1 ){
 
-         }
+                     CorrectGuess = charSplit.indexOf(userGuess);
+                     replace(userGuess,charSplit);
+
+                }else{
+
+                    checkWrongAnswers(userGuess);
+                }
+            }else{
+                alert("You Lose :( ");
+                reset(incorrectGuess);
+
+            }
  }// Colsing function event
 
    
