@@ -57,6 +57,7 @@
     	remainingGuesses = 6;// restarting Game 
     	document.querySelector('div.answers').innerHTML ='';
     	solution(answers);// start a new game
+        counter =0;
     	document.querySelector("div.errors").innerHTML = "";
     	console.log(blankAnswer);
 
@@ -83,12 +84,12 @@
     
         document.onkeyup = function(event) {
         var userGuess = String.fromCharCode(event.keyCode).toLowerCase();// Takes user development 
-       
+       // ask how to update and check for letters only I know it relates to specific characters code
             if( remainingGuesses > 0 ){
                 if ( counter === charSplit.length){
                     alert( 'You win!');
 
-                    reset();
+                    reset(incorrectGuess);
                 }else if(charSplit.indexOf(userGuess) !== -1 ){
 
                      CorrectGuess = charSplit.indexOf(userGuess);
