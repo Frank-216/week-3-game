@@ -1,5 +1,5 @@
   // All my Javascript for the program 
-
+// Get rid of the ALERTS 
     var answers = ['red','blue', 'yellow', 'orange', 'purple'];
     var remainingGuesses = 6; // guesses remaining 
     var round = 0; // round 
@@ -8,7 +8,8 @@
     var blankAnswer;
     var CorrectGuess;
     var incorrectGuess = [];
-    var counter = 0;;
+    var counter = 0;
+    var illegalCharacters =[];
 
 
     // split the solution & display the correct number of letters of the solution.
@@ -30,12 +31,16 @@
 				
     }
     function replace(userGuess, charSplit){
-        for (var i = 0; i < charSplit.length; i++) {
-            if( charSplit[i] === userGuess){
-                blankAnswer[i] = userGuess;
-                 counter++;
-                console.log(counter);
+        // The if statement asks if you have already guest that letter.  if not continues. If it is already in the answer 
+        if(blankAnswer.indexOf(userGuess) == -1){
+            for (var i = 0; i < charSplit.length; i++) {
+                if( charSplit[i] === userGuess){
+                 blankAnswer[i] = userGuess;
+                  counter++;
+                  console.log(counter);
             }
+         }
+        
         }
     	//letter = charSplit.indexOf(userGuess);
     	//blankAnswer[letter] = userGuess;
@@ -43,13 +48,14 @@
 
     }
     function reset(incorrectGuess){
+       console.log(incorrectGuess);
     	for (var i = 0; i < incorrectGuess.length; i++){
     		incorrectGuess[i] = " _ ";
     	}
     	userGuess = null;// empties user guess
-    	console.log(userGuess);
+    	
     	remainingGuesses = 6;// restarting Game 
-    	console.log(remainingGuesses);
+    	document.querySelector('div.answers').innerHTML ='';
     	solution(answers);// start a new game
     	document.querySelector("div.errors").innerHTML = "";
     	console.log(blankAnswer);
@@ -58,7 +64,7 @@
     // Function for what to do if we get an incorrect guess. If already a part of the array enter a new letter. Else guess is valid but still incorrect. 
     function checkWrongAnswers(userGuess){
     	
-    	if(incorrectGuess.indexOf(userGuess) != -1 ){
+    	if(incorrectGuess.indexOf(userGuess) !==-1 ){
     			alert( "You already guessed '" + userGuess + "'. Guess a different Letter!");
     	}	else{
 	    		console.log(incorrectGuess.indexOf(userGuess));
@@ -79,7 +85,11 @@
         var userGuess = String.fromCharCode(event.keyCode).toLowerCase();// Takes user development 
        
             if( remainingGuesses > 0 ){
-                if(charSplit.indexOf(userGuess) !== -1 ){
+                if ( counter === charSplit.length){
+                    alert( 'You win!');
+
+                    reset();
+                }else if(charSplit.indexOf(userGuess) !== -1 ){
 
                      CorrectGuess = charSplit.indexOf(userGuess);
                      replace(userGuess,charSplit);
