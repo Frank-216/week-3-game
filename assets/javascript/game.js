@@ -8,7 +8,7 @@
     var blankAnswer;
     var CorrectGuess;
     var incorrectGuess = [];
-    var counter = 0;
+    var counter = 0;// to help track winning game 
     var illegalCharacters =[];
 
 
@@ -47,19 +47,18 @@
     	document.querySelector("div.answers").innerHTML = blankAnswer.join(" ");
 
     }
-    function reset(incorrectGuess){
-       console.log(incorrectGuess);
-    	for (var i = 0; i < incorrectGuess.length; i++){
-    		incorrectGuess[i] = " _ ";
-    	}
-    	userGuess = null;// empties user guess
-    	
+    function reset(){
+       
+    	incorrectGuess = [];
+        userGuess = null;// empties user guess
     	remainingGuesses = 8;// restarting Game 
-    	document.querySelector('div.answers').innerHTML ='';
     	solution(answers);// start a new game
+        document.querySelector('div.answers').innerHTML =blankAnswer.join(' ');
+
         counter =0;
     	document.querySelector("div.errors").innerHTML = "";
     	console.log(blankAnswer);
+        document.querySelector
 
     }
     // Function for what to do if we get an incorrect guess. If already a part of the array enter a new letter. Else guess is valid but still incorrect. 
@@ -75,11 +74,7 @@
 	      	remainingGuesses--;//reducing remaining counts
     		}
     	}// Close function
-        function music() {
-           
-    myMusic.play();
-    myGameArea.start();
-}
+       
 
 
 
@@ -101,11 +96,9 @@
                     // check if you win.  Length of counter will be equal to length of charSplit 
                     if ( counter === charSplit.length){
                         document.querySelector('div.info').innerHTML = ("<h1> YOU WIN!!!</h1>");
-                        reset(incorrectGuess);
+                        reset();
                         // Check is userGuess is part of the charsplit 
                     }else if(charSplit.indexOf(userGuess) !== -1 ){
-
-                         
                          document.querySelector('div.info').innerHTML = userGuess + " is correct keep going!" ;
                          // Calls function replace to make the visual change. 
                          replace(userGuess,charSplit);
@@ -116,7 +109,7 @@
                      }
               }else{
                 document.querySelector('div.info').innerHTML = ('<h1> YOU LOSE :( the correct answer was ' + rand + "!</h1>" );
-                reset(incorrectGuess);
+                reset();
             } 
         }
             else {                 
