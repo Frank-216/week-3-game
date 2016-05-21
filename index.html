@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Franks Hangman</title>
+    <title>A Hangman of Thrones</title>
 
     <!-- Reset -->
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
@@ -21,43 +21,63 @@
         
 
   </head>
-  <body>
-    
-    <h1>Welcome to Hangman</h1>
+  <body class="background">
+  
+        <row>
+            <div class ="col-md-12"></div>
+        </row>
+
+    <h1>A Hangman of Thrones</h1>
     <!-- open row 1 -->
-    <row>
+     <row>
+            <div class ="col-md-12 "></div>
+        </row>
+        <row class = "height-change"></row>
+
+         <row>
     	<!-- Create Spacing and colmum to display hangman-->
     	<div class="col-md-10 col-md-offset-1">
-    	<!-- open panel -->
-    		<div class="panel">
-    		<!-- Open panel header -->
-    			<div class="panel-header">
+            <div class="panel background">
+            <!-- Open panel header -->
+                <div class="panel-header text-center">
                 <h1> Instructions</h1>
-                <h5> Lets play hangman.   Below you will get a hint. You will have six chances to guess the word. </h5>
+                <h5> Welcome to a Hangman of Thrones.  You will have 10 tries to enter the correct house name.  And remember that when you play a Hangman of Thrones you win or you die there is no middle ground... </h5>
                  <!-- Close Row -->
-    				
+                    
 
-    			</div>	<!-- close hangman game -->
-    			<div class="panel-body ">
-    				<div class="row">
-                    <div class="col-md-4 col-md-offset-1 answers ">
-                        
+                </div>  <!-- close hangman game -->
+                <div class="panel-body ">
+                    <div class="row">
+                    <div class="col-md-4 col-md-offset-1">
+                        <h5> Final Answer </h5>
+                        <row>
+                            <div class = "col-md-12 answers"></div>
+                        </row>
                     </div>
-                    <div class="col-md-3 col-md-offset-1 errors">
-                        
+                    <div class="col-md-3 col-md-offset-1 border">
+                     <h5>Wrong Answers </h5>
+                        <row>
+                            <div class="col-md-12 errors"></div>
+                        </row>
                     </div>
                     
-                </div>
-    				
-    			</div>
-    		</div>
-
-    	</div>
-    	
+                 </div><!--close row --> 
+                    
+                </div> <!-- close panel body -->
+            </div><!-- close panel -->
+        </div>
+    	<!-- close panel --> 	
     <!-- close Row 1 -->
     </row>
+    <row>
+        <div class="col-md-10 col-md-offset-1 info text-center">
+            *Press a letter key to get started.*
+        </div>
+    </row>
 
-
+    <audio autoplay>
+      <source src="assets/music/Game of Thrones - Main Theme (Extended) HD.mp3" type="audio/mpeg">
+    </audio>
 
     <script type="text/javascript" src = "assets/javascript/game.js"></script>
   </body>

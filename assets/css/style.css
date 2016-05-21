@@ -1,9 +1,23 @@
 .border{
-	border: red solid 2px;
+	border-left:grey solid 5px;
 }
 .errors{
-	border:green solid 2px;
+	
+	height: 20px;
 }
 .answers{
-	border: blue solid 2px;
+	
+}
+.info{
+	border:grey solid 2px;
+}
+.background{
+	background-image: url(http://cdn.pcwallart.com/images/game-of-thrones-house-logo-wallpaper-1.jpg);
+	color:#B3B6B7;
+}
+.text-color{
+
+}
+.height-change{
+	height:30px;
 }
